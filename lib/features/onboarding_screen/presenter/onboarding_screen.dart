@@ -1,112 +1,90 @@
+import 'package:book_summary_app/features/onboarding_screen/presenter/widgets/chip_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 
 class OnboardingScreen extends StatelessWidget {
-   OnboardingScreen();
-
-  final List<GoalCategory> categories = [
-    GoalCategory('Self Acceptance', Colors.lime),
-    GoalCategory('Fears', Colors.grey[800]!),
-    GoalCategory('Memory', Colors.grey[800]!),
-    GoalCategory('Personal boundaries', Colors.grey[800]!),
-    GoalCategory('Parents', Colors.grey[800]!),
-    GoalCategory('Doubts', Colors.blue[200]!),
-    GoalCategory('Controlling emotions', Colors.amber),
-    GoalCategory('Parenting', Colors.grey[800]!),
-  ];
+  final int itemCount = 36;
+  final ValueNotifier<int> selectedPageNotifier = ValueNotifier<int>(0);
 
   @override
   Widget build(BuildContext context) {
+    final int itemsPerPage = 12;
+    final int pageCount = (itemCount / itemsPerPage).ceil();
+
+
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A1A),
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // PageView indicators
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  width: 40,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[800],
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 40),
-            
-            // Title
-            const Text(
-              'Choose\nyour goals',
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                height: 1.2,
-              ),
-            ),
-            const SizedBox(height: 40),
-            Expanded(child: SizedBox()),
-            // Scrollable categories using StaggeredGrid
-            SingleChildScrollView(
+      backgroundColor: Colors.grey,
+      body: Column(
+        children: [
+          SizedBox(
+            height: kToolbarHeight,
+          ),
+          Text(
+            'Choose your goals',
+            style: TextStyle(color: Colors.red),
+          ),
+          Expanded(child: SizedBox()),
+          NotificationListener<ScrollNotification>(
+             onNotification: (scrollNotification) {
+                if (scrollNotification is ScrollUpdateNotification) {
+                  // Calcula la página actual basándote en el desplazamiento
+                  final currentPage = (scrollNotification.metrics.pixels /
+                          scrollNotification.metrics.viewportDimension)
+                      .round();
+                  selectedPageNotifier.value = currentPage;
+                }
+                return true;
+              },
+            child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Container(
-                // Ancho mínimo para asegurar que el scroll funcione bien
-                constraints: BoxConstraints(
-                  maxHeight: MediaQuery.sizeOf(context).height * 0.4,
-                  minHeight: MediaQuery.sizeOf(context).height * 0.1,
-                  minWidth: MediaQuery.of(context).size.width,
-                ),
-                child: StaggeredGrid.count(
-                  crossAxisCount: 4, // Número de filas
-                  mainAxisSpacing: 12,
-                  crossAxisSpacing: 12,
-                  children: categories.map((category) {
-                    return StaggeredGridTile.fit(
-                      crossAxisCellCount: 1,
-                      child: ActionChip(
-                        label: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8.0,
-                            vertical: 4.0,
-                          ),
-                          child: Text(
-                            category.name,
-                            style: TextStyle(
-                              color: category.color == Colors.grey[800] 
-                                ? Colors.white 
-                                : Colors.black,
-                              fontSize: 16,
+              child: Column(
+                children: List.generate(4, (rowIndex) {
+                  return Padding(
+                    padding: const EdgeInsets.only(
+                        bottom: 16), // Espaciado entre filas
+                    child: Row(
+                      children: List.generate(itemCount ~/ 4, (columnIndex) {
+                        int itemIndex = rowIndex * (itemCount ~/ 4) + columnIndex;
+                        
+                        return Padding(
+                          padding: const EdgeInsets.only(
+                              right: 16), // Espaciado entre columnas
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(12),
                             ),
+                            alignment: Alignment.center,
+                            child: ChipButton(
+                                label: itemIndex.isOdd
+                                    ? 'textTest'
+                                    : 'asdasdasdasdas',
+                                isActivated: true),
                           ),
-                        ),
-                        backgroundColor: category.color,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        onPressed: () {
-                          // Handle chip selection
-                        },
-                      ),
-                    );
-                  }).toList(),
-                ),
+                        );
+                      }),
+                    ),
+                  );
+                }),
               ),
             ),
-          ],
-        ),
+          ),
+          ValueListenableBuilder<int>(
+            valueListenable: selectedPageNotifier,
+            builder: (context, selectedPage, _) {
+              return PageViewDotIndicator(
+                currentItem: selectedPage,
+                count: pageCount,
+                unselectedColor: Colors.black26,
+                selectedColor: Colors.blue,
+              );
+            },
+          ),
+          SizedBox(
+            height: kBottomNavigationBarHeight,
+          ),
+        ],
       ),
     );
   }
-}
-
-class GoalCategory {
-  final String name;
-  final Color color;
-
-  GoalCategory(this.name, this.color);
 }
