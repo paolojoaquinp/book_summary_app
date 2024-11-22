@@ -1,4 +1,4 @@
-import 'package:book_summary_app/features/home_screen/presenter/widgets/book_card.dart';
+import 'package:book_summary_app/features/home_screen/presenter/page/widgets/book_card.dart';
 import 'package:flutter/material.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 

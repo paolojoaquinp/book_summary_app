@@ -1,4 +1,4 @@
-import 'package:book_summary_app/features/home_screen/presenter/widgets/books_swipper.dart';
+import 'package:book_summary_app/features/home_screen/presenter/page/widgets/books_swipper.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
