@@ -6,9 +6,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.green,
-      body: SafeArea(
+    return SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -71,9 +69,6 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
-              
-              // Authors list
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -96,11 +91,13 @@ class HomeScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              BooksSwiper()
+              Expanded(child: BooksSwiper()),
+              SizedBox(
+                height: kBottomNavigationBarHeight,
+              )
             ],
           ),
         ),
-      ),
     );
   }
 
