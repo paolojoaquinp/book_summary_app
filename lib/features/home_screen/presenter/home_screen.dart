@@ -1,3 +1,4 @@
+import 'package:book_summary_app/features/home_screen/presenter/widgets/books_swipper.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -6,7 +7,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1B1E),
+      backgroundColor: Colors.green,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -95,6 +96,7 @@ class HomeScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              BooksSwiper()
             ],
           ),
         ),

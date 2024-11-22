@@ -1,5 +1,5 @@
 import 'package:book_summary_app/features/home_screen/presenter/home_screen.dart';
-import 'package:book_summary_app/features/home_screen/presenter/widgets/swiper_example.dart';
+import 'package:book_summary_app/features/home_screen/presenter/widgets/books_swipper.dart';
 import 'package:book_summary_app/features/onboarding_screen/presenter/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SwiperExample()
+      home: HomeScreen()
     );
   }
 }
