@@ -1,3 +1,4 @@
+import 'package:book_summary_app/features/detail_book/presenter/detail_book_screen.dart';
 import 'package:book_summary_app/features/home_screen/presenter/home_screen.dart';
 import 'package:book_summary_app/features/home_screen/presenter/widgets/books_swipper.dart';
 import 'package:book_summary_app/features/onboarding_screen/presenter/onboarding_screen.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomeScreen()
+      home: DetailBookScreen()
     );
   }
 }
