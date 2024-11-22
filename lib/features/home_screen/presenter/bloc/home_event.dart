@@ -13,3 +13,5 @@ class NavigationAnimationEventInitial extends HomeEvent {
   List<Object?> get props => [];
 }
 
+
+

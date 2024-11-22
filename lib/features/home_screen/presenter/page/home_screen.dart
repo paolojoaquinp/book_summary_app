@@ -1,128 +1,141 @@
-import 'package:book_summary_app/features/home_screen/presenter/page/widgets/books_swipper.dart';
+import 'package:book_summary_app/features/home_screen/presenter/bloc/home_bloc.dart';
+import 'package:book_summary_app/features/home_screen/presenter/page/widgets/avatar_widget.dart';
+import 'package:book_summary_app/features/home_screen/presenter/page/widgets/book_swipper/books_swipper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hello, Kelly',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+    return BlocProvider<HomeBloc>(
+      create: (context) => HomeBloc(),
+      child: _Page(),
+    );
+  }
+}
+
+class _Page extends StatelessWidget {
+  const _Page({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return _Body();
+  }
+}
+
+class _Body extends StatelessWidget {
+  const _Body({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hello, Kelly',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
+                        SizedBox(height: 4),
+                        Text(
+                          'These books are perfect for you',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                    CircleAvatar(
+                      radius: 24,
+                      backgroundImage: NetworkImage(
+                        'https://placehold.co/100x100',
                       ),
-                      SizedBox(height: 4),
-                      Text(
-                        'These books are perfect for you',
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 32),
+        
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Authors of books',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'See All',
                         style: TextStyle(
-                          color: Colors.grey,
+                          color: Color(0xFF6B7AFF),
                           fontSize: 16,
                         ),
                       ),
-                    ],
-                  ),
-                  CircleAvatar(
-                    radius: 24,
-                    backgroundImage: NetworkImage(
-                      'https://placehold.co/100x100',
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 32),
-              
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Authors of books',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'See All',
-                      style: TextStyle(
-                        color: Color(0xFF6B7AFF),
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    _buildAuthorItem('Rene S.'),
-                    _buildAuthorItem('Gray M.'),
-                    _buildAuthorItem('Betty S.'),
-                    _buildAuthorItem('Robert S.'),
                   ],
                 ),
-              ),
-              const SizedBox(height: 32),
-              
-              // Books section
-              const Text(
-                'Books for you',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+                const SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      AvatarWidget(name: 'Rene S.'),
+                      AvatarWidget(name: 'Gray M.'),
+                      AvatarWidget(name: 'Betty S.'),
+                      AvatarWidget(name: 'Robert S.'),
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(child: BooksSwiper()),
-              SizedBox(
-                height: kBottomNavigationBarHeight,
-              )
-            ],
-          ),
-        ),
-    );
-  }
-
-  Widget _buildAuthorItem(String name) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 16),
-      child: Column(
-        children: [
-          const CircleAvatar(
-            radius: 32,
-            child: Text('P'),
-            // backgroundImage: NetworkImage(
-            //   'https://placehold.co/100x100',
-            // ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            name,
-            style: const TextStyle(
-              color: Colors.grey,
-              fontSize: 14,
+                const SizedBox(height: 32),
+        
+                // Books section
+                const Text(
+                  'Books for you',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Expanded(
+                  child: BooksSwipper(
+                    onPressed: () {
+                      context
+                          .read<HomeBloc>()
+                          .add(NavigationAnimationEventInitial());
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: kBottomNavigationBarHeight,
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

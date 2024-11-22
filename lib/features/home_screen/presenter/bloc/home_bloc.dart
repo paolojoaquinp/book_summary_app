@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -9,5 +11,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeEvent>((event, emit) {
       // TODO: implement event handler
     });
+    on<NavigationAnimationEventInitial>(_onNavigationAnimationEventInitial);
+  }
+
+  Future<void> _onNavigationAnimationEventInitial(
+    NavigationAnimationEventInitial event,
+    Emitter<HomeState> emit,
+  ) async {
+    emit(const NavigationAnimationState());
   }
 }
