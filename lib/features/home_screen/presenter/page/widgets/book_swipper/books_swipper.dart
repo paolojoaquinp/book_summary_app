@@ -20,15 +20,19 @@ class BooksSwipper extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<BooksSwipperBloc>(
       create: (_) => BooksSwipperBloc()..add(BooksPageInitialized()),
-      child: _Body(),
+      child: _Body(onPressed: onPressed,),
     );
   }
 }
 
 class _Body extends StatelessWidget {
+
   const _Body({
     super.key,
+    required this.onPressed,
   });
+
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +54,12 @@ class _Body extends StatelessWidget {
                     final rotation = -(diff * 0.1);
                     return GestureDetector(
                       onTap: () {
+                        onPressed();
                         Navigator.push(
                             context,
                             PageRouteBuilder(
-                              transitionDuration: const Duration(milliseconds: 1100),
-                              reverseTransitionDuration: const Duration(milliseconds: 1100),
+                              transitionDuration: const Duration(milliseconds: 1200),
+                              reverseTransitionDuration: const Duration(milliseconds: 1200),
                               pageBuilder: (context, animation, secondaryAnimation) {
                                 return DetailBookScreen(index: index);
                               },

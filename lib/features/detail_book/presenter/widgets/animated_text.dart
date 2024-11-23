@@ -14,7 +14,7 @@ class AnimatedFadeInWidget extends StatelessWidget {
     return TweenAnimationBuilder<double>(
       duration: duration,
       tween: Tween<double>(begin: 0.0, end: 1.0),
-      curve: const Interval(0.33,1.0,),
+      curve: const Interval(0.75,1.0,),
       builder: (context, value, child) {
         return Opacity(
           opacity: value,

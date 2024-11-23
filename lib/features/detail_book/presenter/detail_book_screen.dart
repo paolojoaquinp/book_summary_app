@@ -1,4 +1,5 @@
 import 'package:book_summary_app/features/detail_book/presenter/widgets/animated_text.dart';
+import 'package:book_summary_app/features/detail_book/presenter/widgets/card_detail_book.dart';
 import 'package:book_summary_app/features/home_screen/presenter/page/widgets/book_card.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class DetailBookScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int transitionDuration = 2000;
     return Scaffold(
 //      backgroundColor: Colors.white,
       backgroundColor: const Color(0xff071018),
@@ -46,7 +48,7 @@ class DetailBookScreen extends StatelessWidget {
                     Hero(
                       tag: 'title $index',
                       child: Material(
-                        color: const Color(0xff071018),
+                        color: Colors.transparent,
                         child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 0.45,
                           child: BookCard(
@@ -70,17 +72,27 @@ class DetailBookScreen extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          _cardDetailBook(
-                              label: 'Raiting',
-                              detailLabel: '8.6/10',
-                              isIcon: true),
-                          _cardDetailBook(
-                            label: 'Duration',
-                            detailLabel: '12 min',
+                          AnimatedFadeInWidget(
+                            duration: Duration(
+                                milliseconds: transitionDuration + 100),
+                            widgetHOW: CardDetailBook(
+                                label: 'Raiting',
+                                detailLabel: '8.6/10',
+                                isIcon: true),
                           ),
-                          _cardDetailBook(
-                            label: 'Emotions',
-                            detailLabel: 'Doubts',
+                          AnimatedFadeInWidget(
+                            duration: Duration(milliseconds: transitionDuration + 350),
+                            widgetHOW: CardDetailBook(
+                              label: 'Duration',
+                              detailLabel: '12 min',
+                            ),
+                          ),
+                          AnimatedFadeInWidget(
+                            duration: Duration(milliseconds: transitionDuration + 650),
+                            widgetHOW: CardDetailBook(
+                              label: 'Emotions',
+                              detailLabel: 'Doubts',
+                            ),
                           ),
                         ],
                       ),
@@ -91,9 +103,9 @@ class DetailBookScreen extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              const AnimatedFadeInWidget(
-                duration: const Duration(
-                    milliseconds: 1500 + 1500), // 1500 delay + 3000 animación,
+              AnimatedFadeInWidget(
+                duration: Duration(
+                    milliseconds: transitionDuration + 100), // 1500 delay + 3000 animación,
                 widgetHOW: Text(
                   'Don\'t Believe\nEverything You Think',
                   style: TextStyle(
@@ -104,9 +116,9 @@ class DetailBookScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 6.0),
-              const AnimatedFadeInWidget(
-                duration: const Duration(
-                    milliseconds: 1500 + 1500), // 1500 delay + 3000 animación,
+              AnimatedFadeInWidget(
+                duration: Duration(
+                    milliseconds: transitionDuration + 250),
                 widgetHOW: Text(
                   'Book by Joseph Nguyen',
                   style: TextStyle(
@@ -118,8 +130,8 @@ class DetailBookScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16.0),
               AnimatedFadeInWidget(
-                duration: const Duration(
-                    milliseconds: 1500 + 1500), // 1500 delay + 3000 animación,
+                duration: Duration(
+                    milliseconds: transitionDuration + 350),
                 widgetHOW: Text(
                   'In this book, you\'ll discover the root cause of all psychological and emotional suffering and how to achieve freedom of mind to effortlessly create the life you\'ve always wanted to live.\n\nAlthough pain is inevitable, suffering is optional.',
                   style: TextStyle(
@@ -129,71 +141,28 @@ class DetailBookScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16.0),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 24),
-                    maximumSize:
-                        Size(MediaQuery.sizeOf(context).width * 0.8, 86),
-                    minimumSize:
-                        Size(MediaQuery.sizeOf(context).width * 0.8, 46),
-                    backgroundColor: Colors.lime,
-                    foregroundColor: Colors.black,
+              AnimatedFadeInWidget(
+                duration: Duration(milliseconds: transitionDuration + 100),
+                widgetHOW: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 24),
+                      maximumSize:
+                          Size(MediaQuery.sizeOf(context).width * 0.8, 86),
+                      minimumSize:
+                          Size(MediaQuery.sizeOf(context).width * 0.8, 46),
+                      backgroundColor: Colors.lime,
+                      foregroundColor: Colors.black,
+                    ),
+                    child: Text('I want to read'),
                   ),
-                  child: Text('I want to read'),
                 ),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _cardDetailBook(
-      {required String label,
-      bool isIcon = false,
-      required String detailLabel}) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        color: Color(0xff161E26),
-      ),
-      padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 12.0),
-      width: double.maxFinite,
-      child: Row(
-        children: [
-          if (isIcon)
-            Icon(
-              Icons.star,
-              color: Color(0xff8482FD),
-            ),
-          if (isIcon)
-            const SizedBox(
-              width: 6.0,
-            ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                label,
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.8),
-                  fontSize: 14,
-                ),
-              ),
-              Text(
-                detailLabel,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }

@@ -19,5 +19,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     Emitter<HomeState> emit,
   ) async {
     emit(const NavigationAnimationState());
+    await Future.delayed(Duration(milliseconds: 2100)).then((_){
+      emit(const HomeInitial());
+    });
   }
 }
