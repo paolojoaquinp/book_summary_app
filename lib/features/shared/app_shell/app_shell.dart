@@ -22,6 +22,7 @@ class AppShell extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             backgroundColor: const Color(0xff071018),
+//            backgroundColor: Colors.white,
             body: IndexedStack(
               index: state.currentPageIndex,
               children: _pages,

@@ -1,20 +1,25 @@
+import 'package:book_summary_app/features/detail_book/presenter/widgets/animated_text.dart';
+import 'package:book_summary_app/features/home_screen/presenter/page/widgets/book_card.dart';
 import 'package:flutter/material.dart';
 
 class DetailBookScreen extends StatelessWidget {
-  const DetailBookScreen({super.key});
+  const DetailBookScreen({super.key, required this.index});
+
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+//      backgroundColor: Colors.white,
       backgroundColor: const Color(0xff071018),
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
         title: Text(
           "Book Detail",
           style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20
-          ),
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         ),
         backgroundColor: Color(0xff071018),
         actions: [
@@ -38,15 +43,28 @@ class DetailBookScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                      child: Image.network(
-                        'https://picsum.photos/250?image=9',
-                        height: double.maxFinite,
-                        width: MediaQuery.sizeOf(context).width * 0.45,
-                        fit: BoxFit.cover,
+                    Hero(
+                      tag: 'title $index',
+                      child: Material(
+                        color: const Color(0xff071018),
+                        child: SizedBox(
+                          width: MediaQuery.sizeOf(context).width * 0.45,
+                          child: BookCard(
+                            title: 'title $index',
+                            subtitle: 'sbutitle $index',
+                          ),
+                        ),
                       ),
                     ),
+                    // ClipRRect(
+                    //   borderRadius: BorderRadius.all(Radius.circular(20)),
+                    //   child: Image.network(
+                    //     'https://picsum.photos/250?image=9',
+                    //     height: double.maxFinite,
+                    //     width: MediaQuery.sizeOf(context).width * 0.45,
+                    //     fit: BoxFit.cover,
+                    //   ),
+                    // ),
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.45,
                       child: Column(
@@ -73,29 +91,41 @@ class DetailBookScreen extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              Text(
-                'Don\'t Believe\nEverything You Think',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold,
-                    height: 1.4),
-              ),
-              SizedBox(height: 6.0),
-              Text(
-                'Book by Joseph Nguyen',
-                style: TextStyle(
-                  color: Colors.yellow,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
+              const AnimatedFadeInWidget(
+                duration: const Duration(
+                    milliseconds: 1500 + 1500), // 1500 delay + 3000 animación,
+                widgetHOW: Text(
+                  'Don\'t Believe\nEverything You Think',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 28.0,
+                      fontWeight: FontWeight.bold,
+                      height: 1.4),
                 ),
               ),
-              SizedBox(height: 16.0),
-              Text(
-                'In this book, you\'ll discover the root cause of all psychological and emotional suffering and how to achieve freedom of mind to effortlessly create the life you\'ve always wanted to live.\n\nAlthough pain is inevitable, suffering is optional.',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
+              const SizedBox(height: 6.0),
+              const AnimatedFadeInWidget(
+                duration: const Duration(
+                    milliseconds: 1500 + 1500), // 1500 delay + 3000 animación,
+                widgetHOW: Text(
+                  'Book by Joseph Nguyen',
+                  style: TextStyle(
+                    color: Colors.yellow,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              AnimatedFadeInWidget(
+                duration: const Duration(
+                    milliseconds: 1500 + 1500), // 1500 delay + 3000 animación,
+                widgetHOW: Text(
+                  'In this book, you\'ll discover the root cause of all psychological and emotional suffering and how to achieve freedom of mind to effortlessly create the life you\'ve always wanted to live.\n\nAlthough pain is inevitable, suffering is optional.',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                  ),
                 ),
               ),
               SizedBox(height: 16.0),
