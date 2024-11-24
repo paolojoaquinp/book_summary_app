@@ -39,6 +39,7 @@ dependencies:
   flutter_svg: ^2.0.15
   flutter_bloc: ^8.1.6
   equatable: ^2.0.7
+  animate_do: ^3.3.4
 
 dev_dependencies:
   flutter_test:
