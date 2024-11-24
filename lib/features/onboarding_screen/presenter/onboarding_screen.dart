@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:animate_do/animate_do.dart';
-import 'package:book_summary_app/core/constants/app_colors.dart';
 import 'package:book_summary_app/features/onboarding_screen/presenter/bloc/on_boarding_bloc.dart';
 import 'package:book_summary_app/features/onboarding_screen/presenter/widgets/chip_button.dart';
 import 'package:book_summary_app/features/shared/app_shell/app_shell.dart';

@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 
 part 'on_boarding_event.dart';
 part 'on_boarding_state.dart';
@@ -8,7 +7,6 @@ part 'on_boarding_state.dart';
 class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
   OnBoardingBloc() : super(const OnBoardingState(categories: [], shouldAnimate: false,)) {
     on<OnBoardingEvent>((event, emit) {
-      // TODO: implement event handler
     });
     on<AddCategoryEvent>(_onAddCategoryEvent);
     on<NavigateToNewScreenEvent>(_onNavigateToNewScreenEvent);
@@ -21,7 +19,6 @@ class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
   }
 
   void _onNavigateToNewScreenEvent(NavigateToNewScreenEvent event, Emitter<OnBoardingState> emit) {
-   // Primero activamos la animación del header
     emit(state.copyWith(shouldAnimate: true));
   }
 }
