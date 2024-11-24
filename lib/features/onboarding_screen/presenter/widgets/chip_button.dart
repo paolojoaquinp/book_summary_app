@@ -1,33 +1,49 @@
+import 'dart:math';
+
+import 'package:book_summary_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ChipButton extends StatelessWidget {
   const ChipButton({
     super.key,
-    this.backgroundColor = Colors.white,
     required this.label,
-    required this.isActivated,
+    required this.onPressed,
+    required this.isAdded,
   });
 
-  final Color backgroundColor;
+  final bool isAdded;
   final String label;
-  final bool isActivated;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(50),
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          color: backgroundColor.computeLuminance() > 0.5
-              ? Colors.black
-              : Colors.white,
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
+    final selectedColors = [
+      AppColors.greenLime,
+      AppColors.violetTropitalIndigo,
+      AppColors.yellowSelective,
+    ];
+    final colorBackground = !isAdded
+        ? AppColors.gunMetal
+        : selectedColors.isNotEmpty
+            ? selectedColors[Random().nextInt(3)]
+            : AppColors.gunMetal;
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+        decoration: BoxDecoration(
+          color: colorBackground,
+          borderRadius: BorderRadius.circular(50),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isAdded
+                ? Colors.black
+                : Colors.white,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
     );
