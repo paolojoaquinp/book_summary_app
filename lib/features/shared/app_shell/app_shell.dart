@@ -62,9 +62,9 @@ class AppShell extends StatelessWidget {
                   ),
                   label: '',
                 ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.favorite_border,),
-                  activeIcon: const Icon(Icons.favorite, color: Colors.blue,),
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.favorite_border,),
+                  activeIcon: Icon(Icons.favorite, color: Colors.blue,),
                   label: '',
                 ),
               ],

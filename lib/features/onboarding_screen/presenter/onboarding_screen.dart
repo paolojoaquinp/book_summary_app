@@ -45,9 +45,11 @@ class OnboardingScreen extends StatelessWidget {
   final int itemCount = categories.length;
   final ValueNotifier<int> selectedPageNotifier = ValueNotifier<int>(0);
 
+  OnboardingScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final int itemsPerPage = 12;
+    const int itemsPerPage = 12;
     final int pageCount = (itemCount / itemsPerPage).ceil();
 
     return BlocProvider<OnBoardingBloc>(
@@ -63,7 +65,6 @@ class OnboardingScreen extends StatelessWidget {
 
 class _Page extends StatelessWidget {
   const _Page({
-    super.key,
     required this.selectedPageNotifier,
     required this.pageCount,
     required this.itemCount,
@@ -96,19 +97,19 @@ class _Page extends StatelessWidget {
                         duration: const Duration(milliseconds: 800),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.3,
-                          padding: EdgeInsets.only(right: 16.0),
+                          padding: const EdgeInsets.only(right: 16.0),
                           child: PageViewDotIndicator(
-                            padding: EdgeInsets.all(0),
+                            padding: const EdgeInsets.all(0),
                             alignment: Alignment.centerRight,
                             fadeEdges: false,
-                            margin: EdgeInsets.only(left: 8.0),
+                            margin: const EdgeInsets.only(left: 8.0),
                             currentItem: selectedPage,
                             count: pageCount,
                             unselectedColor: Colors.grey,
                             selectedColor: Colors.white,
                             boxShape: BoxShape.rectangle,
-                            unselectedSize: Size(8, 8),
-                            size: Size(18, 8),
+                            unselectedSize: const Size(8, 8),
+                            size: const Size(18, 8),
                             borderRadius: BorderRadius.circular(5),
                           ),
                         ),
@@ -124,7 +125,7 @@ class _Page extends StatelessWidget {
                 animate: state.shouldAnimate,
                 duration: const Duration(milliseconds: 800),
                 child: const Padding(
-                  padding: const EdgeInsets.only(left: 16.0),
+                  padding: EdgeInsets.only(left: 16.0),
                   child: Text(
                     'Choose\nyour goals',
                     style: TextStyle(
@@ -182,7 +183,7 @@ class _Page extends StatelessWidget {
                                             context.read<OnBoardingBloc>().add(AddCategoryEvent(category: categories[itemIndex]));
                                             if (state.categories.length == 2) {
                                               Future.delayed(const Duration(milliseconds: 700));
-                                              context.read<OnBoardingBloc>().add(NavigateToNewScreenEvent());
+                                              context.read<OnBoardingBloc>().add(const NavigateToNewScreenEvent());
                                               Future.delayed(const Duration(milliseconds: 800), () {
                                                 Navigator.push(
                                                   context,
@@ -190,7 +191,7 @@ class _Page extends StatelessWidget {
                                                     transitionDuration: const Duration(milliseconds: 500),
                                                     reverseTransitionDuration: const Duration(milliseconds: 500),
                                                     pageBuilder: (context, animation, secondaryAnimation) {
-                                                      return AppShell();
+                                                      return const AppShell();
                                                     },
                                                     transitionsBuilder: (context, animation, secondaryAnimation, child) {
                                                       return FadeTransition(
@@ -214,7 +215,7 @@ class _Page extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: kBottomNavigationBarHeight,
               ),
             ],

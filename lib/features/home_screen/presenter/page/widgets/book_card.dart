@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BookCard extends StatelessWidget {
-  const BookCard({
+  const BookCard({super.key, 
     required this.title,
     required this.subtitle,
     required this.background,
@@ -14,7 +14,7 @@ class BookCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: background,
         borderRadius: BorderRadius.circular(16),
@@ -22,7 +22,7 @@ class BookCard extends StatelessWidget {
           image: NetworkImage('https://cataas.com/cat',),
           fit: BoxFit.cover
         ),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black26,
             blurRadius: 8,

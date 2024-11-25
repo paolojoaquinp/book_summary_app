@@ -1,5 +1,4 @@
 
-import 'package:book_summary_app/features/home_screen/domain/entities/author_from_book_entity.dart';
 
 class BookFromAuthorEntity {
   final String imageUrl;

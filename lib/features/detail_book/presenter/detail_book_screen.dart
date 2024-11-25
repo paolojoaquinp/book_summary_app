@@ -11,24 +11,24 @@ class DetailBookScreen extends StatelessWidget {
   final Color background;
   @override
   Widget build(BuildContext context) {
-    final int transitionDuration = 2000;
+    const int transitionDuration = 2000;
     return Scaffold(
 //      backgroundColor: Colors.white,
       backgroundColor: const Color(0xff071018),
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.white,
         ),
-        title: Text(
+        title: const Text(
           "Book Detail",
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         ),
-        backgroundColor: Color(0xff071018),
+        backgroundColor: const Color(0xff071018),
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.cloud,
                 color: Colors.white,
               ))
@@ -69,9 +69,9 @@ class DetailBookScreen extends StatelessWidget {
                     //     fit: BoxFit.cover,
                     //   ),
                     // ),
-                    Container(
+                    SizedBox(
                       width: MediaQuery.sizeOf(context).width * 0.45,
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           AnimatedFadeInWidget(
@@ -105,7 +105,7 @@ class DetailBookScreen extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              AnimatedFadeInWidget(
+              const AnimatedFadeInWidget(
                 duration: Duration(
                     milliseconds: transitionDuration + 100), // 1500 delay + 3000 animación,
                 widgetHOW: Text(
@@ -118,7 +118,7 @@ class DetailBookScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 6.0),
-              AnimatedFadeInWidget(
+              const AnimatedFadeInWidget(
                 duration: Duration(
                     milliseconds: transitionDuration + 250),
                 widgetHOW: Text(
@@ -131,7 +131,7 @@ class DetailBookScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16.0),
-              AnimatedFadeInWidget(
+              const AnimatedFadeInWidget(
                 duration: Duration(
                     milliseconds: transitionDuration + 350),
                 widgetHOW: Text(
@@ -142,15 +142,15 @@ class DetailBookScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               AnimatedFadeInWidget(
-                duration: Duration(milliseconds: transitionDuration + 100),
+                duration: const Duration(milliseconds: transitionDuration + 100),
                 widgetHOW: Align(
                   alignment: Alignment.bottomCenter,
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 24),
+                      padding: const EdgeInsets.symmetric(vertical: 24),
                       maximumSize:
                           Size(MediaQuery.sizeOf(context).width * 0.8, 86),
                       minimumSize:
@@ -158,7 +158,7 @@ class DetailBookScreen extends StatelessWidget {
                       backgroundColor: Colors.lime,
                       foregroundColor: Colors.black,
                     ),
-                    child: Text('I want to read'),
+                    child: const Text('I want to read'),
                   ),
                 ),
               ),

@@ -29,7 +29,7 @@ class BooksSwipper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<BooksSwipperBloc>(
-      create: (_) => BooksSwipperBloc()..add(BooksPageInitialized()),
+      create: (_) => BooksSwipperBloc()..add(const BooksPageInitialized()),
       child: _Body(onPressed: onPressed,),
     );
   }
@@ -38,7 +38,6 @@ class BooksSwipper extends StatelessWidget {
 class _Body extends StatelessWidget {
 
   const _Body({
-    super.key,
     required this.onPressed,
   });
 
@@ -95,11 +94,11 @@ class _Body extends StatelessWidget {
                                 flightDirection,
                                 fromHeroContext,
                                 toHeroContext) {
-                              Widget _current;
+                              Widget current;
                               if (flightDirection == HeroFlightDirection.push) {
-                                _current = toHeroContext.widget;
+                                current = toHeroContext.widget;
                               } else {
-                                _current = fromHeroContext.widget;
+                                current = fromHeroContext.widget;
                               }
                               return AnimatedBuilder(
                                 animation: animation,
@@ -111,7 +110,7 @@ class _Body extends StatelessWidget {
                                     transform: Matrix4.identity()
                                       ..setEntry(3, 2, 0.001)
                                       ..rotateY(newValue ?? 0),
-                                    child: _current,
+                                    child: current,
                                   );
                                 },
                               );

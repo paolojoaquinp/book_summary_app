@@ -14,24 +14,22 @@ class HomeScreen extends StatelessWidget {
       create: (context) => HomeBloc(
         repository: BooksRepositoryImpl()
       )..add(const HomeInitialEvent()),
-      child: _Page(),
+      child: const _Page(),
     );
   }
 }
 
 class _Page extends StatelessWidget {
-  const _Page({super.key});
+  const _Page();
 
   @override
   Widget build(BuildContext context) {
-    return _Body();
+    return const _Body();
   }
 }
 
 class _Body extends StatelessWidget {
-  const _Body({
-    super.key,
-  });
+  const _Body();
 
   @override
   Widget build(BuildContext context) {
@@ -130,11 +128,11 @@ class _Body extends StatelessWidget {
                         onPressed: () {
                           context
                               .read<HomeBloc>()
-                              .add(NavigationAnimationEventInitial());
+                              .add(const NavigationAnimationEventInitial());
                         },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: kBottomNavigationBarHeight,
                     ),
                   ],
