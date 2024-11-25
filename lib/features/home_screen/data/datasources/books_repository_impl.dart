@@ -1,13 +1,7 @@
-
-import 'package:dio/dio.dart';
 import 'package:book_summary_app/features/home_screen/domain/repositories/books_repository.dart';
 
 class BooksRepositoryImpl implements BooksRepository {
-  final _dio = Dio();
-  
-  static const String _baseUrl = 'https://goodreads12.p.rapidapi.com';
-  static const String _apiKey = '7e0e1495c8msh78930aff9dd3558p1cafeajsnc33ea73e2b30';
-  static const String _apiHost = 'goodreads12.p.rapidapi.com';
+
 
 
   // GetFutureBooksFromAuthor getBooksFromAuthorId(String idAuthor) async {
