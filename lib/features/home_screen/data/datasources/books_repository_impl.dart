@@ -1,4 +1,4 @@
-import 'package:book_summary_app/features/home_screen/data/models/book_from_author_model.dart';
+
 import 'package:dio/dio.dart';
 import 'package:oxidized/oxidized.dart';
 import 'package:book_summary_app/features/home_screen/domain/repositories/books_repository.dart';
@@ -29,14 +29,14 @@ class BooksRepositoryImpl implements BooksRepository {
       );
 
       if (response.statusCode == 200) {
-        final json = response.data;
-        // Asumiendo que la respuesta contiene una lista de libros
-        final List<dynamic> booksJson = json['books'] ?? []; // Ajusta según la estructura real de tu JSON
-        final List<BookFromAuthorModel> books = booksJson
-            .map((bookJson) => BookFromAuthorModel.fromJson(bookJson))
-            .toList();
+        // final json = response.data;
+        // // Asumiendo que la respuesta contiene una lista de libros
+        // final List<dynamic> booksJson = json['books'] ?? []; // Ajusta según la estructura real de tu JSON
+        // final List<BookFromAuthorModel> books = booksJson
+        //     .map((bookJson) => BookFromAuthorModel.fromJson(bookJson))
+        //     .toList();
         
-        return Ok(books);
+        // return Ok(books);
       }
       return Err('Failed to fetch books: ${response.statusCode}');
     } catch (e) {

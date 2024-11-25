@@ -27,14 +27,12 @@ class HomeLoadingState extends HomeState {
   List<Object?> get props => [];
 }
 class HomeLoadedState extends HomeState {
-  const HomeLoadedState({
-    required this.data,
-  });
+  const HomeLoadedState(z);
   
-  final List<BookFromAuthorModel> data;
+  // final List<BookFromAuthorModel> data;
 
   @override
-  List<Object?> get props => [data];
+  List<Object?> get props => [];
 }
 
 class HomeErrorState extends HomeState {
