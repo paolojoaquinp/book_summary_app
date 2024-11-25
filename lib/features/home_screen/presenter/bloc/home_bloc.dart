@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:book_summary_app/features/home_screen/data/models/book_from_author_model.dart';
 import 'package:book_summary_app/features/home_screen/domain/repositories/books_repository.dart';
 import 'package:equatable/equatable.dart';
 
