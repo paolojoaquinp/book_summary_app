@@ -1,3 +1,4 @@
+import 'package:book_summary_app/features/home_screen/data/datasources/books_repository_impl.dart';
 import 'package:book_summary_app/features/home_screen/presenter/bloc/home_bloc.dart';
 import 'package:book_summary_app/features/home_screen/presenter/page/widgets/avatar_widget.dart';
 import 'package:book_summary_app/features/home_screen/presenter/page/widgets/book_swipper/books_swipper.dart';
@@ -10,7 +11,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HomeBloc>(
-      create: (context) => HomeBloc(),
+      create: (context) => HomeBloc(
+        repository: BooksRepositoryImpl()
+      )..add(const HomeInitialEvent()),
       child: _Page(),
     );
   }
@@ -69,7 +72,7 @@ class _Body extends StatelessWidget {
                         CircleAvatar(
                           radius: 24,
                           backgroundImage: NetworkImage(
-                            'https://placehold.co/100x100',
+                            'https://picsum.photos/200/300',
                           ),
                         ),
                       ],
@@ -106,6 +109,7 @@ class _Body extends StatelessWidget {
                           AvatarWidget(name: 'Rene S.'),
                           AvatarWidget(name: 'Gray M.'),
                           AvatarWidget(name: 'Betty S.'),
+                          AvatarWidget(name: 'Robert S.'),
                           AvatarWidget(name: 'Robert S.'),
                         ],
                       ),

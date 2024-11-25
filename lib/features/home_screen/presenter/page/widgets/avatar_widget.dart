@@ -16,10 +16,9 @@ class AvatarWidget extends StatelessWidget {
         children: [
           const CircleAvatar(
             radius: 32,
-            child: Text('P'),
-            // backgroundImage: NetworkImage(
-            //   'https://placehold.co/100x100',
-            // ),
+            backgroundImage: NetworkImage(
+              'https://picsum.photos/200/300?random=1',
+            ),
           ),
           const SizedBox(height: 8),
           Text(

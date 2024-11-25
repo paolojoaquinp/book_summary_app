@@ -1,12 +1,22 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:book_summary_app/core/constants/app_colors.dart';
 import 'package:book_summary_app/features/detail_book/presenter/detail_book_screen.dart';
 import 'package:book_summary_app/features/home_screen/presenter/page/widgets/book_card.dart';
 import 'package:book_summary_app/features/home_screen/presenter/page/widgets/book_swipper/bloc/books_swipper_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
+
+final List<Color> selectedColors = [
+    AppColors.greenLime,
+    AppColors.violetTropitalIndigo,
+    AppColors.yellowSelective,
+    AppColors.violetTropitalIndigo,
+    AppColors.yellowSelective,
+  ];
+
 
 class BooksSwipper extends StatelessWidget {
   const BooksSwipper({
@@ -61,7 +71,10 @@ class _Body extends StatelessWidget {
                               transitionDuration: const Duration(milliseconds: 1200),
                               reverseTransitionDuration: const Duration(milliseconds: 1200),
                               pageBuilder: (context, animation, secondaryAnimation) {
-                                return DetailBookScreen(index: index);
+                                return DetailBookScreen(
+                                  index: index,
+                                  background: selectedColors[index],
+                                );
                               },
                               transitionsBuilder: (context, animation, secondaryAnimation, child) {
                                 return FadeTransition(
@@ -104,6 +117,7 @@ class _Body extends StatelessWidget {
                               );
                             },
                             child: BookCard(
+                                background: selectedColors[index],
                                 title: 'title $index',
                                 subtitle: 'subtitle $index'),
                           ),

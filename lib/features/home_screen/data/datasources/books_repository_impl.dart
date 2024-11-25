@@ -16,14 +16,14 @@ class BooksRepositoryImpl implements BooksRepository {
       final response = await _dio.get(
         '$_baseUrl/getAuthorBooks',
         queryParameters: {
-          'authorId': idAuthor,
+          'authorID': '1077326',
         },
         options: Options(
           headers: {
             'x-rapidapi-key': _apiKey,
             'x-rapidapi-host': _apiHost,
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
+            'Accept': '*/*',
           },
         ),
       );

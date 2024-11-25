@@ -3,11 +3,12 @@ import 'package:book_summary_app/features/detail_book/presenter/widgets/card_det
 import 'package:book_summary_app/features/home_screen/presenter/page/widgets/book_card.dart';
 import 'package:flutter/material.dart';
 
+
 class DetailBookScreen extends StatelessWidget {
-  const DetailBookScreen({super.key, required this.index});
+  const DetailBookScreen({super.key, required this.index, required this.background,});
 
   final int index;
-
+  final Color background;
   @override
   Widget build(BuildContext context) {
     final int transitionDuration = 2000;
@@ -52,6 +53,7 @@ class DetailBookScreen extends StatelessWidget {
                         child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 0.45,
                           child: BookCard(
+                            background: background,
                             title: 'title $index',
                             subtitle: 'sbutitle $index',
                           ),

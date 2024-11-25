@@ -5,6 +5,12 @@ sealed class HomeEvent extends Equatable {
 
 }
 
+class HomeInitialEvent extends HomeEvent {
+  const HomeInitialEvent();
+  @override
+  List<Object?> get props => [];
+}
+
 
 class NavigationAnimationEventInitial extends HomeEvent {
   const NavigationAnimationEventInitial();

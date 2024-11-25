@@ -19,3 +19,29 @@ class NavigationAnimationState extends HomeState {
   List<Object> get props => [];
 
 }
+
+class HomeLoadingState extends HomeState {
+  const HomeLoadingState();
+  
+  @override
+  List<Object?> get props => [];
+}
+class HomeLoadedState extends HomeState {
+  const HomeLoadedState({
+    required this.data,
+  });
+  
+  final List<BookFromAuthorModel> data;
+
+  @override
+  List<Object?> get props => [data];
+}
+
+class HomeErrorState extends HomeState {
+  const HomeErrorState({required this.message});
+
+  final String message;
+  
+  @override
+  List<Object?> get props => [message];
+}
