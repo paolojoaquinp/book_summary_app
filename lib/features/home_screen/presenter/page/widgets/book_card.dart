@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 class BookCard extends StatelessWidget {
   const BookCard({super.key, 
     required this.title,
-    required this.subtitle,
+    required this.subtitle, 
     required this.background,
+    required this.index,
   });
 
   final String title;
   final String subtitle;
   final Color background;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +20,8 @@ class BookCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: background,
         borderRadius: BorderRadius.circular(16),
-        image: const DecorationImage(
-          image: NetworkImage('https://cataas.com/cat',),
+        image: DecorationImage(
+          image: NetworkImage('https://covers.openlibrary.org/b/id/${index + 1}-M.jpg',),
           fit: BoxFit.cover
         ),
         boxShadow: const [

@@ -53,6 +53,7 @@ class DetailBookScreen extends StatelessWidget {
                         child: SizedBox(
                           width: MediaQuery.sizeOf(context).width * 0.45,
                           child: BookCard(
+                            index: index,
                             background: background,
                             title: 'title $index',
                             subtitle: 'sbutitle $index',

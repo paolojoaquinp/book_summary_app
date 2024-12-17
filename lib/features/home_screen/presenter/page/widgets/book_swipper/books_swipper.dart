@@ -116,6 +116,7 @@ class _Body extends StatelessWidget {
                               );
                             },
                             child: BookCard(
+                                index: index,
                                 background: selectedColors[index],
                                 title: 'title $index',
                                 subtitle: 'subtitle $index'),
