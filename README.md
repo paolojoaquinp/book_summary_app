@@ -1,16 +1,38 @@
-# book_summary_app
 
-A new Flutter project.
+# Ticket Bus App
 
-## Getting Started
+An app to follow and watch your favorites book. Research about your books and watch the reviews from the readers with an interactive interface.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Inspiration:
+[Link Here](https://dribbble.com/shots/20092016-Book-Summary-Mobile-IOS-App-Prototype)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Screenshots
+
+![App Ticket Bus Screenshot](./screenshots/screenshot-book-sumary.png)
+
+
+## Features
+
+- OnBoarding chips animation
+- PageView animated
+- Hero Flip Animation
+- Tween animation card detail
+
+
+## Video Demo
+
+![App Ticket Bus Gif Video Demostration](./screenshots/book-summary-app-gif.gif)
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Support
+
+For support, email paolojoaquinpintoperez@gmail.com or join our community in youtube [Pacha code](https://www.youtube.com/@paolojoaquinp).
+
