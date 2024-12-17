@@ -1,5 +1,5 @@
 
-# Ticket Bus App
+# Book Summary App
 
 An app to follow and watch your favorites book. Research about your books and watch the reviews from the readers with an interactive interface.
 
